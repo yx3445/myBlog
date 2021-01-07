@@ -28,9 +28,9 @@
 
 		<img src="http://placekitten.com/900/300" class="img-responsive">
 		<br />
-		<p class="lead">{{ article.abstract }}</p>
+		<p class="lead">{{ article.abstract_to_html | safe }}</p>
 		<p>
-			{{ article.content | truncatechars:100}}
+			{{ article.content_to_html | truncatechars:100 | safe }}
 		</p>
 		<p class="text-right"><a href="{% url 'detail' article.id %}">阅读全文...</a></p>
 		<hr>
@@ -42,18 +42,18 @@
 		{% if articles.has_previous %}
 		<li class="previous">
 			<a href="?page=1">&laquo; 首页</a>
-			<a href="?page={{ articles.previous_page_number }}"><span aria-hidden="true">&larr;</span> 上一页</a>
+			<a href="?page={{ articles.previous_page_number }} {% if keyword %}&keyword={{ keyword }}{% endif %}"><span aria-hidden="true">&larr;</span> 上一页</a>
 		</li>
 		{% endif %}
 		<!-- <span class="current">
 			Page {{ articles.number }} of {{ articles.pageinator.num_pages }}
 		</span> -->
 		{% for current_page in articles.paginator.page_range %}
-		<li><a href="?page={{ current_page }}">{{ current_page }}</a></li>
+		<li><a href="?page={{ current_page }} {% if keyword %}&keyword={{ keyword }}{% endif %}">{{ current_page }}</a></li>
 		{% endfor %}
 		{% if articles.has_next %}
 		<li class="next">
-			<a href="?page={{ articles.next_page_number }}">下一页 <span aria-hidden="true">&rarr;</span></a>
+			<a href="?page={{ articles.next_page_number }} {% if keyword %}&keyword={{ keyword }}{% endif %}">下一页 <span aria-hidden="true">&rarr;</span></a>
 		</li>
 		{% endif %}
 	</ul>

@@ -1,0 +1,18 @@
+<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .markdownx-preview{
+        background: lightblue;
+        overflow-y: hidden;
+        border:1px solid #dddddd
+    }
+</style>
+
+<div class="markdownx row">
+    <div class="col-md-6">
+        {% include 'django/forms/widgets/textarea.html' %}
+    </div>
+    <div class="col-md-6">
+        <div class="markdownx-preview" style="color: red;"></div>
+    </div>
+</div>

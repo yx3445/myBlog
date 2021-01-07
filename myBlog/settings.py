@@ -41,7 +41,13 @@ INSTALLED_APPS = [
     'articles.apps.ArticlesConfig',
     'users.apps.UsersConfig',
     'cousers.apps.CousersConfig',
+    'markdownx',
+    'django.forms',
+    'django.contrib.sites',
+    'django_comments',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +76,8 @@ TEMPLATES = [
         },
     },
 ]
+# 设置优先从自建的templas中渲染模板
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
 WSGI_APPLICATION = 'myBlog.wsgi.application'
 
@@ -125,3 +133,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
